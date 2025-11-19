@@ -88,4 +88,5 @@ async def post_inference(data: Data):
     _inference = preds[0]
 
     # convert 0/1 to <=50K />50K label
-    return {"result": apply_label(_inference)}
+    # NOTE: apply_label expects an indexable input, so wrap in a list
+    return {"result": apply_label([_inference])}
